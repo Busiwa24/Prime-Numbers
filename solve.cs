@@ -12,3 +12,28 @@
                                 in the array) which is a constant.
          Space Complexity: O(1) //number of dynamically allocated variables remain constant for any input.
          
+*/
+
+class Solution
+{
+    static void Main(String[] args)
+    {
+        var numberOfQueries = int.Parse(Console.ReadLine());
+        ulong[] primes = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53 };
+        for (int i = 0; i < numberOfQueries; i++)
+        {
+            var inputNumber = ulong.Parse(Console.ReadLine());
+            var primeMultiplier = 1UL;
+            var primeNumberIndex = 0;
+            while (true)
+            {
+                primeMultiplier *= primes[primeNumberIndex++];
+                if (primeMultiplier <= inputNumber)
+                    continue;
+                else
+                    break;
+            }
+            Console.WriteLine(primeNumberIndex - 1);
+        }
+    }
+}
